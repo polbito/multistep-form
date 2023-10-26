@@ -1,0 +1,553 @@
+*,*::after,*::before {
+    box-sizing: border-box;
+    margin: 0;
+}
+body {
+    font-family: 'Ubuntu', sans-serif;
+    background-color: hsl(217, 100%, 97%);
+}
+.container {
+    transition: all .3s ease;
+}
+.sidebar {
+    background-image: url("assets/images/bg-sidebar-mobile.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    min-height: 175px;
+}
+.sidebar .steps {
+    max-width: 155px;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    padding-top: 3em;
+    color: hsl(0, 0%, 100%);
+}
+.sidebar .steps .step .step-number {
+    
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    border-radius: 50%;    
+    border: 1px solid hsl(0, 0%, 100%);
+    padding-top: 5px;
+}
+.sidebar .steps .step .active-step {
+    padding-top: 8px;
+    border-radius: 50%;    
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    background-color: hsl(228, 100%, 84%);
+    color: black;
+    border: none;
+}
+.sidebar .steps .step .step-description {
+    display: none;
+}
+.form {
+    background-color: hsl(0, 0%, 100%);
+    width: 350px;
+    margin: auto;
+    margin-top: -3em;
+    border-radius: 10px;
+    padding: 2em 1.2em;
+    position: relative;
+    transition: width 1s ease;
+}
+.form .title {
+    color: hsl(213, 96%, 18%);
+}
+.form .description p {
+    margin-top: .7em;
+    line-height: 19px;
+    color: hsl(231, 11%, 63%);
+    width: 240px;
+}
+.form .input{
+    margin-top: 1.7em;
+}
+
+.form .label-container {
+    display: flex;
+    justify-content: space-between;
+}
+.form .label-container .oninvalid-msg {
+    font-size: .8rem;
+    color: hsl(354, 84%, 57%);
+    font-weight: 600;
+    transition: all .2s ease;
+}
+.form .input .input-field {
+    margin-top: .3em;
+    border: 1px solid hsl(229, 24%, 87%);
+    padding: .6em;
+    border-radius: 5px;
+    width: 100%;
+    outline: none;
+    font-size: 1.2rem;
+    transition: all .2s ease;
+}
+.form .input .input-field:focus {
+    border: 1px solid hsl(243, 100%, 62%);
+}
+.form .input .input-field::placeholder {
+    font-size: 1rem;
+    font-weight: 600;
+    color: hsl(231, 11%, 63%);
+    letter-spacing: 1.3px;
+}
+.form .next-step .next-step-button{
+    cursor: pointer;
+    background-color: hsl(213, 96%, 18%);
+    color: hsl(0, 0%, 100%);
+    border: none;
+    padding: .6em 1.2em;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    position: absolute;
+    right: 0em;
+    bottom: -4em;    
+}
+
+/* Desktop Design */
+@media (min-width: 1200px) {
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+    .container {
+        background-color: hsl(0, 0%, 100%);
+        padding: 1em;
+        border-radius: 10px;
+        display: flex;      
+        width: 900px; 
+    }
+    .sidebar {
+        background-image: url("assets/images/bg-sidebar-desktop.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        min-height: 547px;
+        min-width: 270px;
+        border-radius: 10px;
+    }
+    .sidebar .steps {
+        max-width: 100%;
+        display: flex;
+        margin: 0;
+        padding-top: 2.4em;
+        padding-left: 2.2em;
+        flex-direction: column;
+    }
+    .sidebar .step {
+        display: flex;
+        align-items: center;
+    }
+    .sidebar .step:not(:last-child) {
+        margin-bottom: 1.5em;
+    }
+    .sidebar .steps .step .step-number {
+        width: 35px;
+        height: 35px;
+        padding-top: 7px;
+    }
+    .sidebar .steps .step .step-description {
+        display: block;
+        margin-left: 1.2em;
+        text-transform: uppercase;
+    }
+    .sidebar .step .step-description p:first-child {
+        color: hsl(231, 11%, 63%);
+        font-size: .8rem;
+    }
+    .sidebar .step .step-description p:last-child {
+        margin-top: .3em;
+        font-size: .9rem;
+        font-weight: 600;
+    }
+    .form {
+        width: 100%;
+        margin-top: 0;
+        padding: 3em 4.7em 3em 4.7em;
+        min-height: 547px;
+    }
+    .form .description .title {
+        font-size: 1.8rem;
+    }
+    .form .description p {
+        width: 100%;
+    }
+    .form .input{
+        margin-top: 1.3em;
+    }
+    .form .first-input{
+        margin-top: 2.5em;
+    }
+    .form .input .input-field {
+        margin-top: .3em;
+        border: 1px solid hsl(229, 24%, 87%);
+        padding: .6em;
+        border-radius: 5px;
+        width: 100%;
+        outline: none;
+        font-size: 1.2rem;
+    }
+    .form .input .title {
+        font-size: .9rem;
+        font-weight: 500;
+    }
+    .form .input .input-field::placeholder {
+        font-size: 1rem;
+        font-weight: 600;
+        color: hsl(231, 11%, 63%);
+        letter-spacing: 1.2px;
+    }
+    .form .next-step .next-step-button{
+        cursor: pointer;
+        background-color: hsl(213, 96%, 18%);
+        color: hsl(0, 0%, 100%);
+        border: none;
+        padding: .6em 1.2em;
+        border-radius: 5px;
+        font-size: 1.1rem;
+        position: absolute;
+        right: 4.7em ;
+        bottom: 2em;    
+    }
+
+}
+/*                                     Form2 Styling                          */
+
+.plans {
+    margin-top: 1.4em;
+}
+.plans .plan {
+    display: flex;
+    align-items: center;
+    padding: 1em;
+    border: 1px solid hsl(229, 24%, 87%);
+    border-radius: 7px;
+    cursor: pointer;
+    transition: .2s;
+}
+.plans .plan:hover {
+    border: 1px solid hsl(243, 100%, 62%);
+}
+.plans .plan img {
+    align-self: flex-start;
+}
+.plans .plan:not(:last-child) {
+    margin-bottom: 1em;
+}
+.plans .active-plan {
+    background-color: hsl(217, 100%, 97%);
+    border: 1px solid hsl(243, 100%, 62%);
+}
+.plans .plan .plan-description {
+    margin-left: 1em;
+}
+.plans .plan .plan-description .plan-name {
+    font-weight: 600;
+    color: hsl(213, 96%, 18%);
+    margin-bottom: .4em;
+}
+.plans .plan .plan-description .plan-price {
+    color: hsl(231, 11%, 63%);
+}
+.switch-section {
+    margin-top: 1.7em;
+    background-color: hsl(217, 100%, 97%);
+    display: flex;
+    align-items: center;
+    border-radius: 7px;
+    padding: 1em 3em;
+    justify-content: space-between;
+}
+.switch-section .active-switch {
+    font-weight: 500;
+    color: hsl(215, 91%, 18%);
+}
+.switch-section .inactive-switch {
+    font-weight: 500;
+    color: hsl(231, 11%, 63%);
+}
+.switch-button {
+    background-color: hsl(215, 91%, 18%);
+    width: 40px;
+    height: 20px;
+    border-radius: 30px;
+    position: relative;
+    cursor: pointer;
+    transition: all 1s ease;
+}
+.switch-button .switch-container {
+    display: block;
+    background-color: hsl(0, 0%, 100%);
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    position: absolute;
+    left: 4px;
+    bottom: 3.4px;
+}
+.switch-button .yearly {
+    left: auto;
+    right: 4px;
+}
+
+.back-step {
+    position: absolute;
+    left: 0;
+    bottom: -4em;
+    
+}
+.back-step .back-step-button {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    color: hsl(231, 11%, 63%);
+    font-weight: 700;
+    transition: .2s;
+    font-size: .9rem;
+}
+.back-step .back-step-button:hover {
+    color: hsl(215, 91%, 18%);
+    
+}
+
+@media (min-width: 1200px) {
+    .plans {
+        margin-top: 2.4em;
+        display: flex;
+        justify-content: space-between;
+    }
+    .plans .plan {
+        flex-direction: column;
+        width: calc(90% / 3);
+    }
+    .plans .plan .plan-description {
+        margin-left: 0em;
+        margin-top: 2em;
+        align-self: start;
+    }
+    .plans .plan:not(:last-child) {
+        margin-bottom: 0em;
+    }
+    #form2 .next-step .next-step-button{
+        position: absolute;
+        right: 4.3em;
+        bottom: 1em;
+    }
+    .back-step {
+        position: absolute;
+        left: 4.5em;
+        bottom: 3em;
+    }
+}
+
+/*                                    Form3 Styling                          */
+.add-ons {
+    margin-top: 2em;
+}
+.add-ons .add-on {
+    cursor: pointer;
+    border: 1px solid hsl(229, 24%, 87%);
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    padding: 1em;
+    margin-top: 1em;
+    transition: all .2s ease;
+    user-select: none;
+}
+.add-on:hover {
+    border: 1px solid hsl(243, 100%, 62%);
+}
+.add-ons .active-add-on {
+    background-color: hsl(217, 100%, 97%);
+    border: 1px solid hsl(243, 100%, 62%);
+}
+.add-ons .add-on .checkbox {
+    width: 22px;
+    height: 22px;
+    border: 1px solid hsl(229, 24%, 87%);
+    border-radius: 5px;
+}
+.checked {
+    background-color: hsl(243, 100%, 62%);
+    display: none;
+
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+.checked svg {
+    margin: 2px 0 0 3px;
+}
+
+.add-ons .add-on .description {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: relative;
+}
+.add-ons .add-on .description div {
+    margin-left: 1em;
+}
+.add-ons .add-on .description div .title {
+    font-weight: 600;
+    font-size: .9rem;
+    margin: 0;
+    
+}
+.add-ons .add-on .description div p {
+    font-size: .8rem;
+    margin-top: 3px;
+}
+.add-ons .add-on .description .add-on-price {
+    font-size: .8rem;
+    position: absolute;
+    right: 0;
+    color: hsl(243, 100%, 62%);
+    font-weight: 500;
+}
+
+/*              from4 styling            */
+
+.bill {
+    margin-top: 1em;
+    background-color: hsl(217, 100%, 97%);
+    padding: 1em;
+    border-radius: 7px;
+}
+.plan-chosed {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.plan-chosed p {
+    color: hsl(213, 96%, 18%);
+    font-weight: 600;
+    font-size: .9rem;
+    text-transform: capitalize;
+    margin-bottom: .3em;
+}
+.plan-chosed a {
+    color: hsl(231, 11%, 63%);
+    text-decoration: none;
+    font-weight: 500;
+    text-decoration: underline 2px;
+    font-size: .95rem;
+}
+.plan-chosed .chosed-plan-price {
+    color: hsl(213, 96%, 18%);
+    font-weight: 600;
+    font-size: .9rem;
+}
+.bill hr {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    color: hsl(217, 100%, 97%);
+    opacity: 30%;
+}
+.total {
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+    padding-top: 2em;
+    padding-bottom: 0;
+}
+.total .total--price {
+    color: hsl(243, 100%, 62%);
+    font-weight: 600;
+}
+
+/*                 Summary Styling                  */
+
+.summary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.summary .icon {
+    padding-top: 1em;
+    padding-bottom: 1.2em;
+    width: 55px;
+}
+.summary img {
+    width: 100%;
+}
+.summary h2 {
+    padding-bottom: .2em;
+}
+.summary p {
+    padding: .5em;
+    line-height: 22px;
+    color: hsl(231, 11%, 63%);
+    text-align: center;
+}
+.summary p span {
+    margin-left: 1em;
+}
+
+@media (min-width: 1200px) {
+    .summary .icon {
+        width: 75px;
+    }
+    .summary h2 {
+        font-size: 2rem;
+    }
+    .summary p span {
+        margin-left: 0;
+    }
+}
+
+
+/*      multistep form      */
+
+/* form,.summary {
+    display: none;
+}
+#form1 {
+    display: block;
+} */
+.container {
+    padding: 1em !important;
+    /* padding: 0 !important; */
+}
+
+
+/* /////////   Animations    ////////// */
+
+@keyframes moveRightLeft {
+    0% {
+      
+      transform: translateX(0px);
+    }
+    50% {
+      transform: translateX(100px);
+    }
+    100% {
+      
+      transform: translateX(0px);
+    }
+}
+@keyframes OpcationControl {
+    0% {
+      opacity: 0;
+    }
+    25% {
+      opacity: 25%;
+    }
+    50% {
+        opacity: 50%;
+    }
+    100% {
+      opacity: 100%;
+    }
+}

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+    <title>Multi-step form</title>
+    <!-- Css Styling -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="alert_styling.css">
+    <!-- GoogleFont -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&family=Roboto:wght@100;300;400;500;700;900&family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container">
+            <aside class="sidebar">
+                <div class="steps">
+
+                    <div class="step">
+                        <div class="step-number active-step" id="step-icon-1">1</div>
+                        <div class="step-description">
+                            <p>step 1</p>
+                            <p>your info</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number" id="step-icon-2">2</div>
+                        <div class="step-description">
+                            <p>step 2</p>
+                            <p>select plan</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number" id="step-icon-3">3</div>
+                        <div class="step-description">
+                            <p>step 3</p>
+                            <p>add-ons</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number" id="step-icon-4">4</div>
+                        <div class="step-description">
+                            <p>step 4</p>
+                            <p>summary</p>
+                        </div>
+                    </div>
+
+                </div>
+            </aside>
+            <form action="#" class="form" id="form1">
+                <div class="description">
+                    <h2 class="title">Personal info</h2>
+                    <p>Please provide your name, email address, and phone number.</p>
+                </div>
+                <div class="input first-input">
+                    <div class="label-container">
+                        <p class="title">Name</p>
+                        <p class="oninvalid-msg"></p>
+                    </div>
+                    <input class="input-field" type="text" name="name" id="name" placeholder="e.g. Stephen King">
+                </div>
+                <div class="input">
+                    <div class="label-container">
+                        <p class="title">Email Address</p>
+                        <p class="oninvalid-msg"></p>
+                    </div>
+                    <input class="input-field" type="email" name="name" id="email" placeholder="e.g. stephenking@lorem.com">
+                </div>
+                <div class="input">
+                    <div class="label-container">
+                        <p class="title">Phone Number</p>
+                        <p class="oninvalid-msg"></p>
+                    </div>
+                    <input class="input-field" type="number" name="name" id="phone" placeholder="e.g. +1 234 567 890">
+                </div>
+                <div class="next-step">
+                    <button class="next-step-button" id="next1">Next Step</button>
+                </div>
+            </form>
+
+            <form action="#" class="form" id="form2">
+                <div class="description">
+                    <h2 class="title">Select your plan</h2>
+                    <p>You have the option of monthly or yearly billing.</p>
+
+                    <p class="if-no-plan-chosed"></p>
+                </div>
+                <div class="plans">
+                    <div class="plan">
+                        <img src="assets/images/icon-arcade.svg" alt="arcade">
+                        <div class="plan-description">
+                            <p class="plan-name">Arcade</p>
+                            <p class="plan-price">$9/mo</p>
+                        </div>
+                    </div>
+                    <div class="plan">
+                        <img src="assets/images/icon-advanced.svg" alt="advanced">
+                        <div class="plan-description">
+                            <p class="plan-name">Advanced</p>
+                            <p class="plan-price">$12/mo</p>
+                        </div>
+                    </div>
+                    <div class="plan active-plan">
+                        <img src="assets/images/icon-pro.svg" alt="pro">
+                        <div class="plan-description">
+                            <p class="plan-name">Pro</p>
+                            <p class="plan-price">$15/mo</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="switch-section">
+                    <p id="monthly" class="active-switch">Monthly</p>
+                    <div class="switch-button" onclick="switchButton()">
+                        <div class="switch-container"></div>
+                    </div>
+                    <p id="yearly" class="inactive-switch">Yearly</p>
+                </div>        
+
+                <div class="back-step">
+                    <button class="back-step-button" id="back1" type="button">Go Back</button>
+                </div>
+                <div class="next-step">
+                    <button class="next-step-button" id="next2" onclick="getChosedPlan()" type="submit">Next Step</button>
+                </div>
+            </form>
+            
+            <form action="#" class="form" id="form3">
+                <div class="description">
+                    <h2 class="title">Pick add-ons</h2>
+                    <p>Add-ons help enhance your gaming experience.</p>
+                </div>
+                <div class="add-ons">
+                    <div class="add-on">
+                        <div class="checkbox">
+                            <div class="checked">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="9" viewBox="0 0 12 9"><path fill="none" stroke="#FFF" stroke-width="2" d="m1 4 3.433 3.433L10.866 1"/></svg>
+                            </div>
+                        </div>
+                        <div class="description">
+                            <div>
+                                <div class="title">Online service</div>
+                                <p>Access to multiplayer games</p>
+                            </div>
+                            <span class="add-on-price">+$1/mo</span>
+                        </div>
+                    </div>
+                    <div class="add-on">
+                        <div class="checkbox">
+                            <div class="checked">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="9" viewBox="0 0 12 9"><path fill="none" stroke="#FFF" stroke-width="2" d="m1 4 3.433 3.433L10.866 1"/></svg>
+                            </div>
+                        </div>
+                        <div class="description">
+                            <div>
+                                <div class="title">Larger storage</div>
+                                <p>Extra 1TB of cloud save</p>
+                            </div>
+                            <span class="add-on-price">+$2/mo</span>
+                        </div>
+                    </div>
+                    <div class="add-on">
+                        <div class="checkbox">
+                            <div class="checked">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="9" viewBox="0 0 12 9"><path fill="none" stroke="#FFF" stroke-width="2" d="m1 4 3.433 3.433L10.866 1"/></svg>
+                            </div>
+                        </div>
+                        <div class="description">
+                            <div>
+                                <div class="title">Customizable Profile</div>
+                                <p>Custom theme on your profile</p>
+                            </div>
+                            <span class="add-on-price">+$2/mo</span>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="back-step">
+                    <button class="back-step-button" id="back2" type="button">Go Back</button>
+                </div>
+                <div class="next-step">
+                    <button class="next-step-button" id="next3" type="submit">Next Step</button>
+                </div>
+            </form>
+
+
+            <form action="#" class="form" id="form4">
+                <div class="description">
+                    <h2 class="title">Finishing up</h2>
+                    <p>Double-check everything looks OK before confirming.</p>
+                </div>
+                <div class="bill">
+                    <div class="plan-chosed">
+                        <div class="chosed">
+                            <p><span class="chosed-plan"></span><span class="plan-type"></span></p>
+                            <a href="#">Change</a>
+                        </div>
+                        <div class="chosed-plan-price">
+                            
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="add-ons-chosed">
+                        
+                    </div>
+                    
+                </div>
+                <div class="total">
+                    <p class="total--p"></p>
+                    <p class="total--price" >$</p>
+                </div>
+                <div class="back-step">
+                    <button class="back-step-button" id="back3" type="button">Go Back</button>
+                </div>
+                <div class="next-step">
+                    <button class="next-step-button" id="next4" type="submit">Confirm</button>
+                </div>
+            </form>
+
+            <div class="summary form">
+                <div class="icon">
+                    <img src="assets/images/icon-thank-you.svg" alt="icon thank you">
+                </div>
+                <h2 class="title">Thank you!</h2>
+                <p>Thanks for confirming your subscription! We hope you have fun 
+                    using our platform. If you ever need support, please feel free 
+                    to email us at <span>support@loremgaming.com</span>.
+                </p>
+            </div >
+        </div>
+
+    <script src="script.js"></script>
+    </body>
+</html>
