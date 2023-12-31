@@ -13,7 +13,7 @@ let step_2 = document.getElementById("step-icon-2");
 let step_3 = document.getElementById("step-icon-3");
 let step_4 = document.getElementById("step-icon-4");
 
-////////////////////////////////////////////////            Form 1            ////////////////////////////////////////////////
+/////////   Form 1   /////////
 const form1 = document.getElementById("form1");
 
 function CheckFrom1(){
@@ -30,10 +30,11 @@ function CheckFrom1(){
     msg_p.forEach((v) => v.innerText = "");
 
     for (let i=0;i<3;i++){
+        console.log(arr[i])
         if (arr[i].value.trim() === "") {
             arr[i].style.cssText = "border: 1px solid hsl(354, 84%, 57%);";
             let p = arr[i].previousElementSibling.lastChild.previousElementSibling;
-            p.innerHTML = msg;
+            p.innerText = msg;
             is_fullfil = false;
         }else {
             new_arr.push(arr[i].value);
@@ -43,15 +44,9 @@ function CheckFrom1(){
     return is_fullfil;
 }
 
-// if (form1) {
-//     form1.addEventListener("submit",function(e){
-//         e.preventDefault();
-//         console.log(CheckFrom1())
-//     })
-// }
 
 
-////////////////////////////////////////////////            Form 2            ////////////////////////////////////////////////
+///////    Form 2  //////////
 
 function CheckFrom2(){
     let is_fullfil;
@@ -158,23 +153,8 @@ function getChosedPlan() {
 }
 
 
-// if (form2) {
-//     form2.addEventListener("submit",function(e){
-//         e.preventDefault();
-//         if (CheckFrom2() === false) {
-//             let display_error_msg = document.querySelector(".if-no-plan-chosed");
-//             display_error_msg.innerText = "Please select a plan.";
-//             display_error_msg.style.cssText = "color: hsl(354, 84%, 57%);font-weight: 600;";
-//         }else {
-//             console.log(`Plan Chosed : ${localStorage.getItem("chosed-plan")}`)
-//         }
-//     })
-// }
 
-
-
-
-////////////////////////////////////////////////            Form 3            ////////////////////////////////////////////////
+///////   Form 3   ////////
 
 function Checked () {
     const checked = document.querySelectorAll(".checked");
@@ -236,14 +216,7 @@ function add_on_plan(){
 }
 
 
-// if (from3) {
-//     add_on_plan();
-//     Checked();
-// }
-
-////////////////////////////////////////////////            Form 4            ////////////////////////////////////////////////
-
-
+////  Form 4  /////
 
 
 
@@ -278,11 +251,6 @@ function Add_Selected_Add_ons_ToPage() {
 
 
 
-
-
-
-
-
 function GetTotalPrice() {
     const total__price = document.querySelector(".total--price");
     if (total__price) {
@@ -306,41 +274,8 @@ function GetTotalPrice() {
 
 
 
-// if (from4) {
-//     const page_plan_chosed = document.querySelector(".chosed-plan");
-//     page_plan_chosed.innerText = localStorage.getItem("chosed-plan");
-    
-//     const page_plan_type = document.querySelector(".plan-type");
-//     page_plan_type.innerText = ` (${localStorage.getItem("plan-type")})`;
 
-//     const page_chosed_plan_price = document.querySelector(".chosed-plan-price");
-//     page_chosed_plan_price.innerText = localStorage.getItem("chosed-plan-price");
-
-//     if (!(form4.style.display === 'none')){
-//         Add_Selected_Add_ons_ToPage();
-//         console.log("Add_Selected_Add_ons_ToPage()");
-//     }
-
-//     const total__p = document.querySelector(".total--p");
-
-//     if (localStorage.getItem("plan-type") === "monthly") {
-//         total__p.innerText = "Total (per month)";
-//     }else if (localStorage.getItem("plan-type") === "yearly") {
-//         total__p.innerText = "Total (per year)";
-//     }
-    
-//     if (!(form4.style.display === 'none')){
-//         GetTotalPrice();
-//         console.log("GetTotalPrice()");
-//     }
-    
-// }
-
-
-
-
-
-//                              TRY multistep form
+//     multistep form
 
 
 
@@ -352,95 +287,107 @@ const back3 = document.getElementById("back3");
 
 
 if (form1) {
-    form1.addEventListener("submit",function(e){
+    form1.addEventListener("submit",(e)=>{
         e.preventDefault();
         
-        form1.style.display = "none";
-        form2.style.display = "block";
+        if(CheckFrom1()){
+            form1.style.display = "none";
+            form2.style.display = "block";
 
-        back1.addEventListener("click",function(){
-            form1.style.display = "block";
-            form2.style.display = "none";
-        })
-        
-        step_1.classList.remove("active-step");
-        step_2.classList.add("active-step");
-
-        form2.addEventListener("submit",function(e){
-            e.preventDefault();
-
-            step_2.classList.remove("active-step");
-            step_3.className = "active-step";
-
-            if (CheckFrom2() === false) {
-                let display_error_msg = document.querySelector(".if-no-plan-chosed");
-                display_error_msg.innerText = "Please select a plan.";
-                display_error_msg.style.cssText = "color: hsl(354, 84%, 57%);font-weight: 600;";
-            }else {
+            back1.addEventListener("click",function(){
+                form1.style.display = "block";
                 form2.style.display = "none";
-                form3.style.display = "block";
+                step_2.classList.remove("active-step");
+                step_1.classList.add("active-step");
+            })
+            
+            step_1.classList.remove("active-step");
+            step_2.classList.add("active-step");
 
-                back2.addEventListener("click",function(){
-                    form2.style.display = "block";
-                    form3.style.display = "none";
-                })
+            form2.addEventListener("submit",function(e){
+                e.preventDefault();
 
-                // for form3
-                add_on_plan();
-                Checked();
+                step_2.classList.remove("active-step");
+                step_3.className = "active-step";
 
-
-
-                
-                form3.addEventListener("submit",function(e){
-                    e.preventDefault();
-
+                if (CheckFrom2() === false) {
+                    let display_error_msg = document.querySelector(".if-no-plan-chosed");
+                    display_error_msg.innerText = "Please select a plan.";
+                    display_error_msg.style.cssText = "color: hsl(354, 84%, 57%);font-weight: 600;";
+                    step_2.classList.add("active-step");
                     step_3.classList.remove("active-step");
                     step_3.classList.add("step-number");
-                    step_4.className = "active-step";
+                }else {
+                    form2.style.display = "none";
+                    form3.style.display = "block";
 
-                    form3.style.display = "none";
-                    form4.style.display = "block";
-
-                    
-
-                    const page_plan_chosed = document.querySelector(".chosed-plan");
-                    page_plan_chosed.innerText = localStorage.getItem("chosed-plan");
-                    
-                    const page_plan_type = document.querySelector(".plan-type");
-                    page_plan_type.innerText = ` (${localStorage.getItem("plan-type")})`;
-    
-                    const page_chosed_plan_price = document.querySelector(".chosed-plan-price");
-                    page_chosed_plan_price.innerText = localStorage.getItem("chosed-plan-price");
-    
-                    
-                    Add_Selected_Add_ons_ToPage();
-    
-                    const total__p = document.querySelector(".total--p");
-    
-                    if (localStorage.getItem("plan-type") === "monthly") {
-                        total__p.innerText = "Total (per month)";
-                    }else if (localStorage.getItem("plan-type") === "yearly") {
-                        total__p.innerText = "Total (per year)";
-                    }
-                    
-                    
-                    GetTotalPrice();
-
-
-                    back3.addEventListener("click",function(){
-                        form3.style.display = "block";
-                        form4.style.display = "none";
-                    })
-                    form4.addEventListener("submit",function(e){
-                        e.preventDefault();
-                        form4.style.display = "none";
+                    back2.addEventListener("click",function(){
+                        form2.style.display = "block";
                         form3.style.display = "none";
-                        document.querySelector(".summary").style.display = "flex";
+                        step_2.classList.add("active-step");
+                        step_3.classList.remove("active-step");
+                        step_3.classList.add("step-number");
                     })
-                })                
-            }
-        })
+
+                    // for form3
+                    add_on_plan();
+                    Checked();
+
+
+
+                    
+                    form3.addEventListener("submit",function(e){
+                        e.preventDefault();
+
+                        step_3.classList.remove("active-step");
+                        step_3.classList.add("step-number");
+                        step_4.className = "active-step";
+
+                        form3.style.display = "none";
+                        form4.style.display = "block";
+
+                        
+
+                        const page_plan_chosed = document.querySelector(".chosed-plan");
+                        page_plan_chosed.innerText = localStorage.getItem("chosed-plan");
+                        
+                        const page_plan_type = document.querySelector(".plan-type");
+                        page_plan_type.innerText = ` (${localStorage.getItem("plan-type")})`;
+        
+                        const page_chosed_plan_price = document.querySelector(".chosed-plan-price");
+                        page_chosed_plan_price.innerText = localStorage.getItem("chosed-plan-price");
+        
+                        
+                        Add_Selected_Add_ons_ToPage();
+        
+                        const total__p = document.querySelector(".total--p");
+        
+                        if (localStorage.getItem("plan-type") === "monthly") {
+                            total__p.innerText = "Total (per month)";
+                        }else if (localStorage.getItem("plan-type") === "yearly") {
+                            total__p.innerText = "Total (per year)";
+                        }
+                        
+                        GetTotalPrice();
+
+                        back3.addEventListener("click",function(){
+                            form3.style.display = "block";
+                            form4.style.display = "none";
+                            step_3.classList.add("active-step");
+                            step_3.classList.add("step-number");
+                            step_4.classList.add("step-number");
+                            step_4.classList.remove("active-step");
+                        })
+                        form4.addEventListener("submit",function(e){
+                            e.preventDefault();
+                            form4.style.display = "none";
+                            form3.style.display = "none";
+                            document.querySelector(".summary").style.display = "flex";
+                        })
+                    })                
+                }
+            })
+        }
+
     })
 }
-
